@@ -1,10 +1,10 @@
 # Panda News
 
-Panda News is a native Android news application built using Jetpack Compose. The app follows the MVVM (Model-View-ViewModel) architecture to some extent and uses API network calling to fetch the latest news articles.
+Panda News is a native Android news application built using Jetpack Compose. The app follows the MVVM (Model-View-ViewModel) architecture to some extent and uses API network calling to fetch the latest news articles across different countries.
 
 ## Features
 
-- Display the latest news articles from various sources.
+- Display the latest news articles from various sources from a wide range of countries.
 - View detailed news articles.
 - Dark mode support.
 
