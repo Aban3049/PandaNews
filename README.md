@@ -10,9 +10,10 @@ Panda News is a native Android news application built using Jetpack Compose. The
 
 ## Screenshots
 
-![NewDetailScreen](https://github.com/Aban3049/PandaNews/assets/157634467/f7277600-cb95-4d6c-9d2f-8be17abe96e2)
-![NewsAppCountries](https://github.com/Aban3049/PandaNews/assets/157634467/06f0c2c1-009b-4c00-825b-58e71fed17e3)
-![NewsAppHome](https://github.com/Aban3049/PandaNews/assets/157634467/e0791f82-175f-49f3-b6dd-5e0fbcf1f57c)
+![NewsAppHome](https://github.com/Aban3049/PandaNews/assets/157634467/f02ace75-5833-4479-be9d-dc61f6844178)
+![NewsAppCountries](https://github.com/Aban3049/PandaNews/assets/157634467/00e3e14a-176f-46de-aa6f-96e46d694f03)
+![NewDetailScreen](https://github.com/Aban3049/PandaNews/assets/157634467/6483c8b4-1fa1-4d6f-aa7e-9d15d6194a3d)
+
 
 ## Architecture
 
