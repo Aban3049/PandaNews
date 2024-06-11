@@ -7,8 +7,12 @@ import retrofit2.Response
 
 class Repo {
 
-    suspend fun newProvider(): Response<NewsModel> {
-        return ApiBuilder.apiProvider().getNewsFromServer()
+
+    suspend fun newProvider(
+        country: String,
+    ): Response<NewsModel> {
+        return ApiBuilder.apiProvider().getNewsFromServer(country = country)
     }
+
 
 }

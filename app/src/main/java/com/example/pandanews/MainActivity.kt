@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.pandanews.Screen.HomeApp
 import com.example.pandanews.Screen.NewsViewModel
+import com.example.pandanews.navGraph.Navigation
 import com.example.pandanews.network.ApiBuilder
 import com.example.pandanews.network.ApiService
 import com.example.pandanews.ui.theme.PandaNewsTheme
@@ -54,7 +55,7 @@ class MainActivity : ComponentActivity() {
                             }
 
                         } else {
-                            HomeApp(viewModel = viewModel)
+                           Navigation()
                         }
 
                     }

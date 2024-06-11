@@ -12,17 +12,28 @@ class NewsViewModel() : ViewModel() {
 
     var res = mutableStateOf<NewsModel?>(null)
 
+
+     var currentCountry = "kr"
+
     init {
         viewModelScope.launch {
-           res.value = getNews(Repo())
+            res.value = getNews(Repo())
         }
     }
 
     suspend fun getNews(repo: Repo): NewsModel? {
 
-        return repo.newProvider().body()
+        return repo.newProvider(currentCountry).body()
 
     }
+
+    fun updateCountry(newCountry: String) {
+        currentCountry = newCountry
+        viewModelScope.launch {
+            res.value = getNews(Repo()) // Refresh news data
+        }
+    }
+
 
 
 }

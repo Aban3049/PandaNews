@@ -68,5 +68,6 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation (libs.retrofit)
     implementation(libs.converter.gson)
-    implementation("io.coil-kt:coil-compose:2.6.0")
+    implementation(libs.coil.compose)
+    implementation (libs.androidx.navigation.compose)
 }
