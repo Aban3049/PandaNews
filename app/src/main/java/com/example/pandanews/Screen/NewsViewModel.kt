@@ -8,12 +8,12 @@ import com.example.pandanews.repo.Repo
 
 import kotlinx.coroutines.launch
 
-class NewsViewModel() : ViewModel() {
+class NewsViewModel : ViewModel() {
 
     var res = mutableStateOf<NewsModel?>(null)
 
 
-     var currentCountry = "kr"
+     private var currentCountry = "kr"
 
     init {
         viewModelScope.launch {
@@ -21,7 +21,7 @@ class NewsViewModel() : ViewModel() {
         }
     }
 
-    suspend fun getNews(repo: Repo): NewsModel? {
+    private suspend fun getNews(repo: Repo): NewsModel? {
 
         return repo.newProvider(currentCountry).body()
 

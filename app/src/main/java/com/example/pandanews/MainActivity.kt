@@ -1,7 +1,6 @@
 package com.example.pandanews
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -13,25 +12,20 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.pandanews.Screen.HomeApp
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.example.pandanews.Screen.NewsViewModel
 import com.example.pandanews.navGraph.Navigation
-import com.example.pandanews.network.ApiBuilder
-import com.example.pandanews.network.ApiService
 import com.example.pandanews.ui.theme.PandaNewsTheme
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         val viewModel: NewsViewModel by viewModels()
+        installSplashScreen()
         setContent {
             PandaNewsTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
@@ -55,7 +49,7 @@ class MainActivity : ComponentActivity() {
                             }
 
                         } else {
-                           Navigation()
+                            Navigation()
                         }
 
                     }

@@ -70,4 +70,6 @@ dependencies {
     implementation(libs.converter.gson)
     implementation(libs.coil.compose)
     implementation (libs.androidx.navigation.compose)
+    implementation("androidx.core:core-splashscreen:1.0.1")
+
 }

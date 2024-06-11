@@ -1,7 +1,6 @@
 package com.example.pandanews.Screen
 
 
-import android.net.Uri
 import android.speech.tts.TextToSpeech
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
@@ -46,7 +45,8 @@ import androidx.navigation.NavHostController
 import coil.compose.AsyncImage
 import com.example.pandanews.R
 import com.google.gson.Gson
-import kotlinx.coroutines.delay
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -130,6 +130,7 @@ fun HomeApp(
 
             items(res.size) { index ->
 
+                val article = res[index]
 
                 // Initialize TextToSpeech
                 textToSpeech = TextToSpeech(LocalContext.current) { status ->
@@ -185,13 +186,13 @@ fun HomeApp(
                                         .fillMaxWidth(),
                                     fontSize = 18.sp,
                                     fontWeight = FontWeight.Bold,
-                                    maxLines = 3,
+                                    maxLines = 2,
                                     textAlign = TextAlign.Start
                                 )
 
                                 Row(
-                                    modifier = Modifier.fillMaxWidth(), // Make the Row fill the width
-                                    horizontalArrangement = Arrangement.SpaceBetween // Arrange items with space between
+                                    modifier = Modifier.fillMaxWidth(),
+                                    horizontalArrangement = Arrangement.SpaceBetween
                                 ) {
 
                                     if (res[index]!!.author != null && res[index]!!.publishedAt != null) {
@@ -233,24 +234,44 @@ fun HomeApp(
 
                                     }
 
+                                    Row(modifier = Modifier
+                                        .fillMaxWidth(),
+                                        horizontalArrangement = Arrangement.SpaceBetween) {
+
+                                        TextButton(
+                                            onClick = {
+
+                                                val articleJson = Gson().toJson(article)
+                                                val encodedJson = URLEncoder.encode(
+                                                    articleJson,
+                                                    StandardCharsets.UTF_8.toString()
+                                                )
+                                                navHostController.navigate("newsDetail/$encodedJson")
+                                            },
+                                            modifier = Modifier
+                                        ) {
+                                            Text("Read More")
+                                        }
 
 
+                                        IconButton(onClick = {
+                                            textToSpeech.speak(
+                                                res[index]!!.description.toString(),
+                                                TextToSpeech.QUEUE_FLUSH,
+                                                null
+                                            )
+                                        })
+                                        {
+                                            Icon(
+                                                painter = painterResource(id = R.drawable.volume_up_24px),
+                                                contentDescription = "Description of the button action"
+                                            )
+                                        }
 
 
-
-
-                                    IconButton(onClick = {
-                                        textToSpeech.speak(
-                                            res[index]!!.description.toString(),
-                                            TextToSpeech.QUEUE_FLUSH,
-                                            null
-                                        )
-                                    }) {
-                                        Icon(
-                                            painter = painterResource(id = R.drawable.volume_up_24px),
-                                            contentDescription = "Description of the button action"
-                                        )
                                     }
+
+
 
 
                                 }
@@ -357,9 +378,12 @@ fun HomeApp(
                                     TextButton(
                                         onClick = {
 
-                                            val selectedArticle = res[index]
-                                            val articleJson = Gson().toJson(selectedArticle)
-                                            navHostController.navigate("newsDetail/$articleJson")
+                                            val articleJson = Gson().toJson(article)
+                                            val encodedJson = URLEncoder.encode(
+                                                articleJson,
+                                                StandardCharsets.UTF_8.toString()
+                                            )
+                                            navHostController.navigate("newsDetail/$encodedJson")
                                         },
                                         modifier = Modifier
                                     ) {

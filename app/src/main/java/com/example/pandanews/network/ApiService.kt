@@ -12,7 +12,7 @@ interface ApiService {
     suspend fun getNewsFromServer(
         @Query("country") country: String = "kr",
         @Query("sortBy") sortBy: String = "publishedAt",
-        @Query("apiKey") apiKey: String = "bd8e84b4994a4a7eb542d3c9bb87f729"
+        @Query("apiKey") apiKey: String = ""
     ): Response<NewsModel>
 
 }
